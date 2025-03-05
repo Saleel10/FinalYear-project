@@ -1,0 +1,145 @@
+
+
+.poster-card{
+
+}
+.respo-union{
+    width: 160px;
+}
+.respo-logo{
+    width: 220px ;
+}
+.respo-stage{
+    font-size: 18px;
+    padding: 4px 26px !important;
+}
+.respo-program{
+    font-size: 20px;
+    padding: 4px 0px !important;
+}
+.respo-result-card{
+
+}
+.respo-badge{
+    max-width: 45px;
+}
+.respo-winner{
+    margin-top: 4px;
+    font-size: 16px;
+}
+.respo-winner-year{
+    font-size: 15px;
+}
+.respo-congrats{
+    text-align: center;
+    font-size: 18px;
+}
+
+
+@media (max-width:600px) {
+    .respo-union{
+        width: 150px;
+    }
+    .respo-logo{
+        width: 200px ;
+    }
+    .respo-stage{
+        font-size: 15px;
+        padding: 4px 26px !important;
+    }
+    .respo-program{
+        font-size: 18px;
+        padding: 4px 0px !important;
+    }
+    .respo-result-card{
+    
+    }
+    .respo-badge{
+        max-width: 43px;
+    }
+    .respo-winner{
+        margin-top: 4px;
+        font-size: 16px;
+    }
+    .respo-winner-year{
+        font-size: 15px;
+    }
+    .respo-congrats{
+        text-align: center;
+        font-size: 18px;
+    }
+}
+@media (max-width:540px) {
+    .respo-union{
+        width: 120px;
+    }
+    .respo-logo{
+        width: 160px ;
+    }
+    .respo-stage{
+        font-size: 10px;
+        padding: 4px 26px !important;
+    }
+    .respo-program{
+        font-size: 14px;
+        padding: 4px 0px !important;
+    }
+    .respo-result-card{
+    
+    }
+    .respo-badge{
+        max-width: 36px;
+    }
+    .respo-winner{
+        margin-top: 4px;
+        font-size: 14px;
+    }
+    .respo-winner-year{
+        font-size: 10px;
+    }
+    .respo-congrats{
+        text-align: center;
+        font-size: 14px;
+    }
+}
+@media (max-width:445px) {
+    .respo-union{
+        width: 100px;
+    }
+    .respo-logo{
+        width: 140px ;
+    }
+    .respo-stage{
+        font-size: 8px;
+        padding: 4px 26px !important;
+    }
+    .respo-program{
+        font-size: 12px;
+        padding: 4px 0px !important;
+    }
+    .respo-result-card{
+    
+    }
+    .respo-badge{
+        max-width: 30px;
+    }
+    .respo-winner{
+        margin-top: 4px;
+        font-size: 12px;
+    }
+    .respo-winner-year{
+        font-size: 8px;
+    }
+    .respo-congrats{
+        text-align: center;
+        font-size: 12px;
+    }
+}
+
+/* speciall */
+.more-winners{
+    font-size: 14px !important;
+}
+.more-winners-year{
+    font-size: 11px !important;
+}
