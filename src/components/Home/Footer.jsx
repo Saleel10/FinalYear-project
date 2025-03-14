@@ -11,7 +11,7 @@ function Footer() {
   };
     return (
     <div >
-      <footer className='h-fit w-full  text-2xl text-center bg-red-950 text-white p-8 rounded-t-2xl flex flex-col justify-between pb-3 ' >
+      <footer className='h-fit w-full  text-2xl text-center bg-[#73052F] text-white p-8 rounded-t-2xl flex flex-col justify-between pb-3 ' >
         <div className='flex justify-between flex-1 flex-row  gap-10 items-center responsive-footer'>
 
           {/* left section */}
@@ -73,24 +73,27 @@ function Footer() {
 
         <div className='text-stone-400 text-[16px] mt-4 pt-2 border-t border-t-stone-500 flex items-center justify-center gap-1'>
           Designed by
-          <NavLink to='https://www.linkedin.com/in/dilshad360/' target="_blank" className='navlink-designer'>
+          <NavLink to='https://www.linkedin.com/in/muhammed-saleel-cp-84064524b/' target="_blank" className='navlink-designer'>
             <p className='designer-1 text-stone-400'>
-              Dilshad,
-
-            </p>
-          </NavLink>
-          <NavLink to='https://www.linkedin.com/in/muhammed-saleel-cp-84064524b' target="_blank" className='navlink-designer'>
-            <p className="designer-2 text-stone-400">
-
               Saleel,
+
             </p>
           </NavLink>
-          <NavLink to='https://www.linkedin.com/in/muhammed-shamil-65878227a/' target="_blank" className='navlink-designer'>
+          <NavLink to='https://www.linkedin.com/in/athif-noor-ap-a879b4256/' target="_blank" className='navlink-designer'>
+            <p className="designer-2 text-stone-400">
+              Athif,
+            </p>
+          </NavLink>
+          <NavLink to='https://www.linkedin.com/in/jasim-muhammed?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app/' target="_blank" className='navlink-designer'>
             <p className="designer-3 text-stone-400">
-              Shamil
+              Jasim
             </p>
           </NavLink>
-          {/* &nbsp;Buy us a <FontAwesomeIcon icon={faCoffee} /> */}
+          <NavLink to='https://www.instagram.com/munavvar_manu_?igsh=MXZhbGcxcGhpMmdlMA==' target="_blank" className='navlink-designer'>
+            <p className="designer-3 text-stone-400">
+              Munavvar
+            </p>
+          </NavLink>
         </div>
         <div>
           <p className='text-stone-400 text-[12px] text-opacity-50'>© 2024 EMEA College of Arts and Science-Kondotty Union. All Rights Reserved</p>

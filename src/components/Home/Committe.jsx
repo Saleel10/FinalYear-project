@@ -28,7 +28,7 @@ function Committe() {
           >
             <div className='flex flex-col items-center justify-center'>
               <div className='flex items-center justify-end  w-full'>
-                <h1 className='font-bold text-red-700 text-2xl  uppercase leading-6 text-right main-committee-heading'>FINEARTS
+                <h1 className='font-bold text-[#73052F] text-2xl  uppercase leading-6 text-right main-committee-heading'>FINEARTS
                   <br /> DIRECTOR</h1>
               </div>
               <div className='relative main-committee overflow-hidden'>
@@ -50,7 +50,7 @@ function Committe() {
           >
             <div className='flex flex-col items-center justify-center'>
               <div className='flex items-center justify-end  w-full'>
-                <h1 className='font-bold text-red-700 text-2xl  uppercase leading-6 text-right main-committee-heading'>FINEARTS
+                <h1 className='font-bold text-[#73052F] text-2xl  uppercase leading-6 text-right main-committee-heading'>FINEARTS
                   <br /> SECRETORY</h1>
               </div>
               <div className='relative main-committee overflow-hidden'>
@@ -71,7 +71,7 @@ function Committe() {
           >
             <div className='flex flex-col items-center justify-center mt-6'>
               <div className='flex items-center justify-end  w-full'>
-                <h1 className='font-bold text-red-700 text-2xl  uppercase leading-6 text-right main-committee-heading'>FINEARTS
+                <h1 className='font-bold text-[#73052F] text-2xl  uppercase leading-6 text-right main-committee-heading'>FINEARTS
                   <br /> CONVENER</h1>
               </div>
               <div className='relative main-committee overflow-hidden'>
@@ -88,11 +88,11 @@ function Committe() {
         <section className='flex flex-col gap-2 items-center '>
 
           <div className='text-center flex items-center gap-6  relative  mb-3 overflow-hidden w-full'>
-            <span className='h-0 w-0 border-b-[15px] border-t-[15px] border-l-[30px] border-l-red-900 border-transparent absolute -left-4'></span>
-            <hr className='border-[2px] border-red-900 w-1/2 mx-auto' />
-            <span className='text-3xl font-bold  uppercase text-red-900 text-nowrap onstage-committee-heading'>OnStage Conveners</span>
-            <hr className='border-[2px] border-red-900 w-1/2 mx-auto' />
-            <span className='h-0 w-0 border-b-[15px] border-t-[15px] border-r-[30px] border-r-red-900 border-transparent absolute -right-4'></span>
+            <span className='h-0 w-0 border-b-[15px] border-t-[15px] border-l-[30px] border-l-[#73052F] border-transparent absolute -left-4'></span>
+            <hr className='border-[2px] border-[#73052F] w-1/2 mx-auto' />
+            <span className='text-3xl font-bold  uppercase text-[#73052F] text-nowrap onstage-committee-heading'>OnStage Conveners</span>
+            <hr className='border-[2px] border-[#73052F] w-1/2 mx-auto' />
+            <span className='h-0 w-0 border-b-[15px] border-t-[15px] border-r-[30px] border-r-[#73052F] border-transparent absolute -right-4'></span>
           </div>
         
             {/* OnStage Commiite */}
@@ -169,11 +169,11 @@ function Committe() {
 
         <section className='flex flex-col gap-2 items-center'>
           <div className='text-center flex items-center gap-6  relative   mb-6 overflow-hidden w-[95%]'>
-            <span className='h-0 w-0 border-b-[15px] border-t-[15px] border-l-[30px] border-l-red-900 border-transparent absolute -left-4'></span>
-            <hr className='border-[2px] border-red-900 w-1/2 mx-auto' />
-            <span className='text-3xl font-bold  uppercase text-red-900 text-nowrap offstage-committee-heading'>OffStage Conveners</span>
-            <hr className='border-[2px] border-red-900 w-1/2 mx-auto' />
-            <span className='h-0 w-0 border-b-[15px] border-t-[15px] border-r-[30px] border-r-red-900 border-transparent absolute -right-4'></span>
+            <span className='h-0 w-0 border-b-[15px] border-t-[15px] border-l-[30px] border-l-[#73052F] border-transparent absolute -left-4'></span>
+            <hr className='border-[2px] border-[#73052F] w-1/2 mx-auto' />
+            <span className='text-3xl font-bold  uppercase text-[#73052F] text-nowrap offstage-committee-heading'>OffStage Conveners</span>
+            <hr className='border-[2px] border-[#73052F] w-1/2 mx-auto' />
+            <span className='h-0 w-0 border-b-[15px] border-t-[15px] border-r-[30px] border-r-[#73052F] border-transparent absolute -right-4'></span>
           </div>
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}

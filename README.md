@@ -38,9 +38,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgements
 
 Kalart was built by:
-- [Shamil](https://github.com/muhammedshamil8)
 - [Saleel](https://www.linkedin.com/in/muhammed-saleel-cp-84064524b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app) - UI/UX
-- [Dilshad](https://github.com/dilshad360)
+- [Athif](https://www.linkedin.com/in/athif-noor-ap-a879b4256/)
+- [Jasim](https://www.linkedin.com/in/jasim-muhammed?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
+- [Munavvar](https://www.instagram.com/munavvar_manu_?igsh=MXZhbGcxcGhpMmdlMA==)
 
 We hope Kalart enhances your arts fest experience at EMEA College of Arts and Science! Enjoy the festivities!
 

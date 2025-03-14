@@ -9,7 +9,7 @@
       "forceConsistentCasingInFileNames": true,
       "noEmit": true,
       "isolatedModules": true,
-      "strict": true
+      "strict": false
     },
     "include": ["src/components/SideBar/* "," ./components/Link "],
     "exclude": ["node_modules"]

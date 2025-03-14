@@ -18,7 +18,7 @@ function Result() {
         <div className='mt-10 flex w-full items-center justify-center ' >
           <NavLink
             to="/results"
-            className=' text-center text-white bg-orange-950 capitalize rounded-md py-2 px-4 font-semibold cursor-pointer hover:bg-orange-900 transition-all ease-in-out '>Other Results</NavLink>
+            className=' text-center text-white bg-[#E1075A] capitalize rounded-md py-2 px-4 font-semibold cursor-pointer hover:bg-[#73052F] transition-all ease-in-out '>Other Results</NavLink>
         </div>
       </motion.div>
 
