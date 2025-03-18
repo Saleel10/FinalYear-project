@@ -2,10 +2,10 @@
 import main1 from '../../assets/Avatars/Committe/Main/img1.png'
 import main2 from '../../assets/Avatars/Committe/Main/img2.png'
 import main3 from '../../assets/Avatars/Committe/Main/img3.png'
-import onstage1 from '../../assets/Avatars/Committe/OnStage/img1.png'
-import onstage2 from '../../assets/Avatars/Committe/OnStage/img2.png'
-import onstage3 from '../../assets/Avatars/Committe/OnStage/img3.png'
-import onstage4 from '../../assets/Avatars/Committe/OnStage/img4.png'
+import onstage1 from '../../assets/Avatars/Committe/OnStage/saleel.png'
+import onstage2 from '../../assets/Avatars/Committe/OnStage/athif.png'
+import onstage3 from '../../assets/Avatars/Committe/OnStage/manu.png'
+import onstage4 from '../../assets/Avatars/Committe/OnStage/jasim.png'
 import offStage1 from '../../assets/Avatars/Committe/OffStage/img1.png'
 import offStage2 from '../../assets/Avatars/Committe/OffStage/img2.png'
 import offStage3 from '../../assets/Avatars/Committe/OffStage/img3.png'
@@ -90,7 +90,7 @@ function Committe() {
           <div className='text-center flex items-center gap-6  relative  mb-3 overflow-hidden w-full'>
             <span className='h-0 w-0 border-b-[15px] border-t-[15px] border-l-[30px] border-l-[#73052F] border-transparent absolute -left-4'></span>
             <hr className='border-[2px] border-[#73052F] w-1/2 mx-auto' />
-            <span className='text-3xl font-bold  uppercase text-[#73052F] text-nowrap onstage-committee-heading'>OnStage Conveners</span>
+            <span className='text-3xl font-bold  uppercase text-[#73052F] text-nowrap onstage-committee-heading'>Technical Wing</span>
             <hr className='border-[2px] border-[#73052F] w-1/2 mx-auto' />
             <span className='h-0 w-0 border-b-[15px] border-t-[15px] border-r-[30px] border-r-[#73052F] border-transparent absolute -right-4'></span>
           </div>
@@ -110,7 +110,7 @@ function Committe() {
                   <div className='absolute background-custom-color h-[70px] w-10 -bottom-8 -right-5  rotate-[55deg]'></div>
                 </div>
                 <div className='flex items-center justify-start  w-full'>
-                  <h3 className='font-semibold text-gray-800 text-xl mt-2 capitalize text-wrap onstage-committee-name'>Safwan TK</h3>
+                  <h3 className='font-semibold text-gray-800 text-xl mt-2 capitalize text-wrap onstage-committee-name'>Saleel CP</h3>
                 </div>
               </div>
               </motion.div>
@@ -126,7 +126,7 @@ function Committe() {
                   <div className='absolute background-custom-color h-[70px] w-10 -bottom-8 -right-5  rotate-[55deg]'></div>
                 </div>
                 <div className='flex items-center justify-start  w-full'>
-                  <h3 className='font-semibold text-gray-800 text-xl mt-2 capitalize text-wrap onstage-committee-name'>Vaseem Afreen</h3>
+                  <h3 className='font-semibold text-gray-800 text-xl mt-2 capitalize text-wrap onstage-committee-name'>Athif Noor</h3>
                 </div>
               </div>
               </motion.div>
@@ -142,8 +142,7 @@ function Committe() {
                   <div className='absolute background-custom-color h-[70px] w-10 -bottom-8 -right-5  rotate-[55deg]'></div>
                 </div>
                 <div className='flex items-center justify-start  w-full'>
-                  <h3 className='font-semibold text-gray-800 text-xl mt-2 capitalize text-wrap onstage-committee-name'>Shafi<br />
-                    Kunnummal</h3>
+                  <h3 className='font-semibold text-gray-800 text-xl mt-2 capitalize text-wrap onstage-committee-name'>Munavvar</h3>
                 </div>
               </div>
               </motion.div>
@@ -160,7 +159,7 @@ function Committe() {
                   <div className='absolute background-custom-color h-[70px] w-10 -bottom-8 -right-5  rotate-[55deg]'></div>
                 </div>
                 <div className='flex items-center justify-start  w-full'>
-                  <h3 className='font-semibold text-gray-800 text-xl mt-2 capitalize text-wrap onstage-committee-name'>Shabeer</h3>
+                  <h3 className='font-semibold text-gray-800 text-xl mt-2 capitalize text-wrap onstage-committee-name'>Jasim</h3>
                 </div>
               </div>
               </motion.div>
@@ -171,7 +170,7 @@ function Committe() {
           <div className='text-center flex items-center gap-6  relative   mb-6 overflow-hidden w-[95%]'>
             <span className='h-0 w-0 border-b-[15px] border-t-[15px] border-l-[30px] border-l-[#73052F] border-transparent absolute -left-4'></span>
             <hr className='border-[2px] border-[#73052F] w-1/2 mx-auto' />
-            <span className='text-3xl font-bold  uppercase text-[#73052F] text-nowrap offstage-committee-heading'>OffStage Conveners</span>
+            <span className='text-3xl font-bold  uppercase text-[#73052F] text-nowrap offstage-committee-heading'>On & Off Stage Conveners</span>
             <hr className='border-[2px] border-[#73052F] w-1/2 mx-auto' />
             <span className='h-0 w-0 border-b-[15px] border-t-[15px] border-r-[30px] border-r-[#73052F] border-transparent absolute -right-4'></span>
           </div>

@@ -151,7 +151,7 @@ const ProgramManagement = () => {
               name="title"
               value={formData.title}
               onChange={handleInputChange}
-              className="text-white w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="text-[#280B0C] w-full bg-[#FFDAE1] px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#E1072E]"
               placeholder="Enter program title"
               required
             />
@@ -165,7 +165,7 @@ const ProgramManagement = () => {
                 name="stage"
                 value={formData.stage}
                 onChange={(e) => setFormData({ ...formData, stage: e.target.value })}
-                className="text-white w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="text-[#280B0C] w-full bg-[#FFDAE1] px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#E1072E]"
               >
                 <option value="on stage">On Stage</option>
                 <option value="off stage">Off Stage</option>
@@ -194,7 +194,7 @@ const ProgramManagement = () => {
           <div className="flex space-x-4">
             <button
               type="submit"
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="bg-[#E1072E] hover:bg-[#83041B] text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               {editMode ? 'Update Program' : 'Create Program'}
             </button>

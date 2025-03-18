@@ -261,7 +261,7 @@ const ProgramResultsAdmin = () => {
                 name="programId"
                 value={formData.programId}
                 onChange={(e) =>selectprogram(e.target.value)}
-                className="text-white w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="text-[#280B0C] w-full bg-[#FFDAE1] px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#E1072E]"
               >
                 <option value="">Select Program</option>
                 {programs.map((program) => (
@@ -282,7 +282,7 @@ const ProgramResultsAdmin = () => {
                 disabled={true}
                 name="stage"
                 value={formData.stage}
-                className="text-white w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="text-[#280B0C] w-full bg-[#FFDAE1] px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#E1072E]"
               >
               </input>
             </div>
@@ -312,7 +312,7 @@ const ProgramResultsAdmin = () => {
                   name="participantId"
                   value={winner.participantId}
                   onChange={(e) => handleInputChange(e, index)}
-                  className="text-white w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="text-[#280B0C] w-full bg-[#FFDAE1] px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#E1072E]"
                 >
                   <option value="">Select Participant</option>
                   {participants.map((participant) => (
@@ -331,12 +331,12 @@ const ProgramResultsAdmin = () => {
                   name="place"
                   value={winner.place}
                   onChange={(e) => handleInputChange(e, index)}
-                  className="text-white w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="text-[#280B0C] w-full bg-[#FFDAE1] px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#E1072E]"
                 >
                   <option value="1st">1st Place</option>
                   <option value="2nd">2nd Place</option>
                   <option value="3rd">3rd Place</option>
-                  <option value="4th">4th Place</option>
+                  
                 </select>
               </div>
 
@@ -355,14 +355,14 @@ const ProgramResultsAdmin = () => {
           <button
             type="button"
             onClick={handleAddWinner}
-            className="text-white bg-green-500 hover:bg-green-700 font-bold py-2 px-4 rounded"
+            className="text-white bg-[#FF23B2] hover:bg-[#D43054] font-bold py-2 px-4 rounded"
           >
             Add Another Winner
           </button>
 
           <button
             type="submit"
-            className="text-white w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="text-white w-full bg-[#E1072E] hover:bg-[#83041B] text-white font-bold py-3 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-[#E1072E]"
           >
             Add Results
           </button>

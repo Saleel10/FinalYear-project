@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { motion } from "framer-motion"
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -13,91 +14,89 @@ import Secondbadge from '../../assets/Poster/2nd.png';
 import Thirdbadge from '../../assets/Poster/3rd.png';
 import Union from '../../assets/Poster/40thUnion.png';
 import Logo from '../../assets/Poster/logo.png';
-import { fetchRecords } from "../../utils/airtableService";
 import '../../styles/Carousal.css';
 import Congrats from '../../assets/Poster/cngrts.png';
+
 const Carousal = () => {
   const [resultList, setResultList] = useState([]);
-  const [result, setResult] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchData = async () => {
-    try {
-      const tableName = "Published Programs";
-      const filterBy = "";
-      const sortField = "auto";
-      const sortDirection = "desc";
-      const maxRecords = 4;
-      const Records = await fetchRecords(
-        tableName,
-        filterBy,
-        sortField,
-        sortDirection,
-        maxRecords
-      );
-      setResultList(Records);
-      // console.log(Records);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const allRecords = [];
-  const fetchProgramsData = async () => {
-    try {
-      const programs = resultList.map((result) => result.fields.Name);
-
-      for (const program of programs) {
-        const tableName = "Result";
-        const filterBy = `{Program} = '${program}'`;
-        const sortField = "Point";
-        const sortDirection = "asc";
-        const Records = await fetchRecords(
-          tableName,
-          filterBy,
-          sortField,
-          sortDirection
-        );
-
-        // Combine all records for the same program
-        allRecords.push({
-          programName: program,
-          records: Records,
-          stage: Records[0].fields.Stage,
-        });
-      }
-      setLoading(false);
-      setResult(allRecords);
-      // console.log(allRecords);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  // Fetch initial data
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/results", {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const results = await response.json();
+        
+        // Transform the data to ensure it has all needed properties
+        const transformedResults = results.map(item => {
+          // Make sure we have both structures available
+          const transformedItem = { ...item };
+          
+          // Ensure stage is properly formatted (convert to uppercase if needed)
+          transformedItem.stage = (item.stage || "").toUpperCase();
+          
+          // Handle records format (for Carousal component)
+          if (!transformedItem.records) {
+            transformedItem.records = (item.winners || []).map(winner => ({
+              fields: {
+                Name: winner.name,
+                Department: winner.department || "",
+                Year: winner.year || "",
+                Team: winner.team || "",
+                Place: winner.position === "1st" ? "FIRST" : 
+                      winner.position === "2nd" ? "SECOND" : 
+                      winner.position === "3rd" ? "THIRD" : ""
+              }
+            }));
+          }
+          
+          return transformedItem;
+        });
+
+        console.log(transformedResults);
+        setResultList(transformedResults);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      }
+    };
+
     fetchData();
   }, []);
-
-  // Fetch program data when resultList changes
-  useEffect(() => {
-    if (resultList.length > 0) {
-      fetchProgramsData();
-    }
-  }, [resultList]);
-
-  const getBadgeImage = (place) => {
-    switch (place) {
-      case "FIRST":
-        return Firstbadge;
-      case "SECOND":
-        return Secondbadge;
-      case "THIRD":
-        return Thirdbadge;
-      default:
-        return '';
-    }
+  const groupWinnersByPosition = (winners) => {
+    const groupedWinners = {};
+    winners.forEach((winner) => {
+      const position = winner.position;
+      if (!groupedWinners[position]) {
+        groupedWinners[position] = [];
+      }
+      groupedWinners[position].push(winner);
+    });
+    return groupedWinners;
   };
+ const getBadgeImage = (position) => {
+     switch (position) {
+       case "1st":
+         return Firstbadge;
+       case "2nd":
+         return Secondbadge;
+       case "3rd":
+         return Thirdbadge;
+       default:
+         return '';
+     }
+   };
 
   return (
     <>
@@ -138,10 +137,8 @@ const Carousal = () => {
           <SwiperSlide>
             <div className="skeleton-item "></div>
           </SwiperSlide>
-
         </Swiper>
       ) : (
-
         <Swiper
           effect={'coverflow'}
           grabCursor={true}
@@ -152,7 +149,6 @@ const Carousal = () => {
             delay: 2500,
             disableOnInteraction: false,
           }}
-          // navigation={true}
           coverflowEffect={{
             rotate: 50,
             stretch: 0,
@@ -167,7 +163,7 @@ const Carousal = () => {
           modules={[EffectCoverflow, Navigation, Pagination, Autoplay]}
           className="mySwiper2"
         >
-          {result.map((item, index) => (
+          {resultList.map((item, index) => (
             <SwiperSlide key={index}>
               <motion.div
                 initial={{ opacity: 0, scale: .5 }}
@@ -175,60 +171,54 @@ const Carousal = () => {
                 viewport={{ once: true }}
               >
                 <div className='rounded-xl result-card-respo overflow-hidden'>
-                  <div className="max-w-[400px]  mx-auto shadow-xl relative ">
-                    <img src={item.stage === "OFF STAGE" ? offStagePoster : onStagePoster} alt="offStagePoster" className="w-full h-auto object-cover responsive-poster-img" />
+                  <div className="mx-auto shadow-xl relative">
+                    <img src={item.stage === "OFF STAGE" ? offStagePoster : onStagePoster} alt="offStagePoster" className="w-full object-cover responsive-poster-img" />
 
-                    <div className=" top-0 left-0 right-0 bottom-0 absolute ">
-                      <div className="flex flex-col justify-between items-center h-full w-full p-4 pt-8 gap-3 responsive-poster-card">
+                    
+                    <div className="flex flex-col items-start justify-start absolute left-16 top-52 gap-1 h-fit">
+                        {/* <p className="w-full bg-blue-800 md:text-[14px] text-[10px] flex items-center justify-center py-1 px-4 rounded-full text-white font-semibold">
+                          Fine Arts {result.stage.toUpperCase()} Result
+                        </p> */}
+
                         <div>
-                          <img src={Union} alt="Union" className="w-40 h-auto  mx-auto" />
-                        </div>
-                        <div className='relative'>
-                          <img src={Logo} alt="Logo" className="w-48 h-auto mx-auto" />
-                          {/* <p className="uppercase absolute text-[10px] -bottom-1 right-10">Fine Arts 23-24</p> */}
-                        </div>
-                        <div>
-                          <p className="bg-blue-900 text-white font-bold py-1 px-6 rounded-full uppercase text-[10px] md:text-[10px]">
-                            Fine Arts {item.stage} Result
-                          </p>
-                        </div>
-                        <div>
-                          <p className="font-bold uppercase">
+                          <p className="font-bold uppercase respo-program">
                             {item.programName}
                           </p>
                         </div>
-                        <div className="flex flex-col bg-white/70 rounded-2xl  p-6 gap-2">
-                          {item.records.map((record, index) => (
-                            <div key={index} className="flex gap-8 items-center">
+                        
+                        <div className="flex flex-col  rounded-xl py-3  gap-4 respo-result-card">
+                          {/* Group winners by position and display badge once for each group */}
+                          {Object.entries(groupWinnersByPosition(item.winners)).map(([position, winners]) => (
+                            <div key={position} className="flex gap-4 items-start">
                               <div>
-                                <img src={getBadgeImage(record.fields.Place)} alt={`Badge ${record.fields.Place}`} className="w-10 top-0" />
+                                <img src={getBadgeImage(position)} alt={`Badge ${position}`} className="top-0 respo-badge max-w-3 md:max-w-5" />
                               </div>
-                              <div>
-                                <p className="font-semibold max-text-[16px]">{record.fields.Name}</p>
-                                <p className="text-[13px] ml-2">{record.fields.Department} {record.fields.Year && <span> ({record.fields.Year} year) </span> }</p>
-                              </div>
-                              <div>
-                                {/* white space */}
+                              <div className={`${winners.length > 1 ? '-mt-1' : '-mt-1'}`}>
+                                {/* Display winner(s) and department(s) for each position */}
+                                {winners.map((winner, index) => (
+                                  <div key={index}>
+                                    <p className={`font-semibold respo-winner ${winners.length > 1 ? 'more-winners' : ''}`}>
+                                      {winner.name}
+                                    </p>
+                                    <p className={`ml-2 respo-winner-year ${winners.length > 1 ? 'more-winners-year' : ''}`}>
+                                      {winner.team && <span> {winner.team} </span>}
+                                      
+                                    </p>
+                                  </div>
+                                ))}
                               </div>
                             </div>
                           ))}
-                          <div></div>
                         </div>
-                        <div>
-                          <img src={Congrats} alt='Congratulations' className='w-40 ' />
-                        </div>
+                        {/* <img src={Congrats} alt="Congrats" className="w-44 h-auto mx-auto respo-congrats" /> */}
                       </div>
                     </div>
                   </div>
-                </div>
+                
               </motion.div>
             </SwiperSlide>
-
-
           ))}
-
         </Swiper>
-
       )}
     </>
   );

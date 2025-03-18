@@ -137,7 +137,7 @@ const ParticipantManagement = () => {
       setTeam('BSC')
     }
     else if (value === 'Islamic Finance'){
-      setTeam('Bvoc')
+      setTeam('BVOC')
     }
   
   else if (value === 'BBA'){
@@ -153,18 +153,18 @@ else if (value === 'English'){
     <div className="bg-white rounded-lg shadow-md p-6">
       <h2 className="text-xl font-bold mb-4">Create Participant</h2>
       <form onSubmit={handleCreateParticipant} className="mb-6 space-y-4">
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" required className="w-full px-4 py-2 border rounded-md text-white" />
-        <select value={department} onChange={(e) => updateDepartment(e.target.value)} required className="w-full px-4 py-2 border rounded-md text-white">
+        <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" required className="w-full bg-[#FFDAE1] px-4 py-2 border-[#280B0C] rounded-md text-[#280B0C]" />
+        <select value={department} onChange={(e) => updateDepartment(e.target.value)} required className="w-full bg-[#FFDAE1] px-4 py-2 border rounded-md text-[#280B0C]">
           <option value="">Select Department</option>
           {departments.map((dept, index) => <option key={index} value={dept}>{dept}</option>)}
         </select>
-        <input disabled={true} value={team} className='text-white w-full px-4 py-2 border rounded-md text-white' placeholder="Team Name" />
-        <select value={year} onChange={(e) => setYear(e.target.value)} required className="w-full px-4 py-2 border rounded-md text-white">
+        <input disabled={true} value={team} className='text-white w-full bg-[#FFDAE1] px-4 py-2 border rounded-md text-[#280B0C]' placeholder="Team Name" />
+        <select value={year} onChange={(e) => setYear(e.target.value)} required className="w-full bg-[#FFDAE1] px-4 py-2 border rounded-md text-[#280B0C]">
           <option value="">Select Year</option>
           {years.map((yr, index) => <option key={index} value={yr}>{yr}</option>)}
         </select>
         {/* <input type="number" value={totalPoints} onChange={(e) => setTotalPoints(Number(e.target.value))} placeholder="Total Points" className="w-full px-4 py-2 border rounded-md" /> */}
-        <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md">Create</button>
+        <button type="submit" className="bg-[#E1072E] hover:bg-[#83041B] text-white px-4 py-2 rounded-md">Create</button>
       </form>
     </div>
   );

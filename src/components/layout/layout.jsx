@@ -87,7 +87,7 @@ const AdminLayout = () => {
           } ${isMobile ? 'fixed h-screen' : 'relative'}`}
         >
           <div className="flex flex-col justify-between h-screen fixed w-64">
-            <div className="p-4 text-lg font-semibold text-blue-800 border-b flex justify-between items-center">
+            <div className="p-4 text-lg font-semibold text-[#E1072E] border-b flex justify-between items-center">
               KALART2025
               {isMobile && (
                 <button 
@@ -109,7 +109,7 @@ const AdminLayout = () => {
                       }}
                       className={({ isActive }) => `w-full flex items-center px-4 py-3 rounded-md text-left transition-colors ${
                         isActive
-                          ? 'bg-blue-100 text-blue-800'
+                          ? 'bg-[#FFDAE1] text-[#E1072E]'
                           : 'text-gray-600 hover:bg-gray-100'
                       }`}
                     >

@@ -208,19 +208,19 @@ function Results() {
                   />
                   <div className="top-0 left-0 right-0 bottom-0 absolute overflow-auto">
                     <div className="flex flex-col gap-4 md:justify-between items-center h-full w-full p-2 md:scale-100">
-                      <div className="flex flex-col items-center justify-between basis-4/12 p-3">
-                        <div>
+                      <div className="flex flex-col items-start justify-start basis-4/12 p-3">
+                        {/* <div>
                           <img src={Union} alt="Union" className="h-auto mx-auto respo-union pt-4" />
-                        </div>
-                        <div className="relative">
+                        </div> */}
+                        {/* <div className="relative">
                           <img src={Logo} alt="Logo" className="h-auto mx-auto respo-logo" />
-                        </div>
+                        </div> */}
                       </div>
 
-                      <div className="flex flex-col items-center justify-between gap-1 h-fit">
-                        <p className="w-full bg-blue-800 md:text-[14px] text-[10px] flex items-center justify-center py-1 px-4 rounded-full text-white font-semibold">
+                      <div className="flex flex-col items-start justify-start absolute left-10 top-32 gap-1 h-fit">
+                        {/* <p className="w-full bg-blue-800 md:text-[14px] text-[10px] flex items-center justify-center py-1 px-4 rounded-full text-white font-semibold">
                           Fine Arts {result.stage.toUpperCase()} Result
-                        </p>
+                        </p> */}
 
                         <div>
                           <p className="font-bold uppercase respo-program">
@@ -228,14 +228,14 @@ function Results() {
                           </p>
                         </div>
                         
-                        <div className="flex flex-col bg-white/70 rounded-xl py-3 p-5 gap-2 respo-result-card">
+                        <div className="flex flex-col  rounded-xl py-3  gap-4 respo-result-card">
                           {/* Group winners by position and display badge once for each group */}
                           {Object.entries(groupWinnersByPosition(result.winners)).map(([position, winners]) => (
                             <div key={position} className="flex gap-4 items-start">
                               <div>
-                                <img src={getBadgeImage(position)} alt={`Badge ${position}`} className="top-0 respo-badge max-w-8 md:max-w-10" />
+                                <img src={getBadgeImage(position)} alt={`Badge ${position}`} className="top-0 respo-badge max-w-3 md:max-w-5" />
                               </div>
-                              <div className={`${winners.length > 1 ? '-mt-1' : 'mt-1'}`}>
+                              <div className={`${winners.length > 1 ? '-mt-1' : '-mt-1'}`}>
                                 {/* Display winner(s) and department(s) for each position */}
                                 {winners.map((winner, index) => (
                                   <div key={index}>
@@ -243,8 +243,8 @@ function Results() {
                                       {winner.name}
                                     </p>
                                     <p className={`ml-2 respo-winner-year ${winners.length > 1 ? 'more-winners-year' : ''}`}>
-                                      {winner.team && <span>Team {winner.team} </span>}
-                                      {winner.year && <span>({winner.year})</span>}
+                                      {winner.team && <span> {winner.team} </span>}
+                                      
                                     </p>
                                   </div>
                                 ))}
@@ -252,7 +252,7 @@ function Results() {
                             </div>
                           ))}
                         </div>
-                        <img src={Congrats} alt="Congrats" className="w-44 h-auto mx-auto respo-congrats" />
+                        {/* <img src={Congrats} alt="Congrats" className="w-44 h-auto mx-auto respo-congrats" /> */}
                       </div>
                       <div></div>
                     </div>

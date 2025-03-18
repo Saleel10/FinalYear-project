@@ -25,7 +25,7 @@ function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-[gray-100]">
       <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold text-center mb-4">Login</h2>
         {error && <p className="text-red-500 text-center">{error}</p>}
@@ -36,7 +36,7 @@ function Login() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full bg-[#FFDAE1] text-[#E1072E] p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E1072E]"
           />
           <input
             type="password"
@@ -44,12 +44,12 @@ function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full bg-[#FFDAE1] text-[#E1072E] p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E1072E]"
           />
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 disabled:bg-gray-400"
+            className="w-full bg-[#E1072E] text-white p-2 rounded-lg hover:bg-[#83041B] disabled:[#E1072E]"
           >
             {loading ? "Logging in..." : "Login"}
           </button>
