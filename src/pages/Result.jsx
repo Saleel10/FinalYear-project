@@ -217,7 +217,7 @@ function Results() {
                         </div> */}
                       </div>
 
-                      <div className="flex flex-col items-start justify-start absolute left-5 sm:left-10 top-16 sm:top-32 h-fit">
+                      <div className="flex flex-col items-start justify-start absolute left-7 sm:left-10 top-20 sm:top-32 h-fit">
                         {/* <p className="w-full bg-blue-800 md:text-[14px] text-[10px] flex items-center justify-center py-1 px-4 rounded-full text-white font-semibold">
                           Fine Arts {result.stage.toUpperCase()} Result
                         </p> */}

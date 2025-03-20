@@ -75,7 +75,7 @@
 @media (max-width: 768px) {
   .mySwiper2 .swiper-slide {
     width: 260px;
-    height: 440px;
+    height: 260px;
   }
   
   .respo-program {
@@ -112,7 +112,7 @@
 @media (max-width: 480px) {
   .mySwiper2 .swiper-slide {
     width: 220px;
-    height: 380px;
+    height: 220px;
   }
   
   .respo-program {
