@@ -27,7 +27,7 @@ function Results() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/results", {
+        const response = await fetch("https://kalart25backend.vercel.app/results", {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

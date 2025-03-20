@@ -7,6 +7,14 @@ app.use(cors());
 app.use(express.json()); // Middleware to parse JSON
 
 // GET all todos from Firebase Firestore
+app.get("/", async (req, res) =>
+{
+  try {
+    res.status(201).json({message: "Kalart Backend is Running"})
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 app.get("/todos", async (req, res) => {
   try {
     const snapshot = await db.collection("todos").get();
