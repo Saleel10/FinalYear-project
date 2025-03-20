@@ -3,20 +3,19 @@ import { collection, getDocs, addDoc, query, where, orderBy, limit, startAfter }
 import { db } from '@/config/firebase';
 
 const ParticipantManagement = () => {
-  const [participants, setParticipants] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [filterDepartment, setFilterDepartment] = useState('');
-  const [filterYear, setFilterYear] = useState('');
+  const [setParticipants] = useState([]);
+  const [setLoading] = useState(false);
+  const [filterDepartment] = useState('');
+  const [filterYear] = useState('');
   const [lastVisible, setLastVisible] = useState(null);
-  const [hasMore, setHasMore] = useState(true);
-  const [departments, setDepartments] = useState([
+  const [setHasMore] = useState(true);
+  const [departments] = useState([
     'Computer Science',
     'Islamic Finance',
     'BBA',
     'English',
   ]);
-  const [years, setYears] = useState([
+  const [years] = useState([
    'First Year',
     'Second Year',
     'Third Year',
@@ -34,9 +33,9 @@ const ParticipantManagement = () => {
 
   const fetchFiltersData = async () => {
     try {
-      const snapshot = await getDocs(collection(db, 'participants'));
-      const uniqueDepartments = new Set();
-      const uniqueYears = new Set();
+      // const snapshot = await getDocs(collection(db, 'participants'));
+      // const uniqueDepartments = new Set();
+      // const uniqueYears = new Set();
       
       // snapshot.docs.forEach(doc => {
       //   const data = doc.data();
