@@ -10,8 +10,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Fireworks from "react-canvas-confetti/dist/presets/fireworks";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
-import { db } from "../../config/Firebase"; // Make sure this path matches your Firebase config file
-
+// import { db } from "../../config/fbase"; // Make sure this path matches your Firebase config file
+import {db} from "../../config/fbase";
 function ScoreBoard() {
   const [scoreBoardData, setScoreBoardData] = useState([]);
   const [animationRunning, setAnimationRunning] = useState(false);

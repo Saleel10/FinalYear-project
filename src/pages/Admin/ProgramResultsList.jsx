@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { collection, getDocs, query, orderBy, limit, where } from 'firebase/firestore';
-// import { db } from '@/config/firebase';
-import {db} from '@/config/firebase';
+// import { db } from '@/config/fbase';
+import {db} from '@/config/fbase';
 
 // eslint-disable-next-line react/prop-types
 const ProgramResultsList = ({ refreshTrigger }) => {

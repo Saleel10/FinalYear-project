@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { collection, getDocs, addDoc, query, where, orderBy, limit, startAfter } from 'firebase/firestore';
-import { db } from '@/config/firebase';
+import { db } from '@/config/fbase';
 
 const ParticipantManagement = () => {
   const [participants, setParticipants] = useState([]);

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { collection, addDoc, getDocs, updateDoc, doc, deleteDoc, serverTimestamp } from 'firebase/firestore';
-import { db } from '@/config/firebase';
-
+// import { db } from '@/config/fbase';
+import {db} from '@/config/fbase';
 const ProgramManagement = () => {
   const [programs, setPrograms] = useState([]);
   const [loading, setLoading] = useState(true);

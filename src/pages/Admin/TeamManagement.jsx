@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { db } from '@/config/firebase';
+import { db } from '@/config/fbase';
 import { collection, getDocs } from 'firebase/firestore';
 
 function TeamManagement() {

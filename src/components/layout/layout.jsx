@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { signOut } from 'firebase/auth';
-// import { auth } from '@/config/firebase';
-import {auth} from 'firebase/auth';
+// import { auth } from '@/config/fbase';
+import {auth} from '@/config/fbase';
 import { useNavigate, Outlet, NavLink } from 'react-router-dom';
 import { Menu, X, LogOut, BarChart, Award, Users, Layers } from 'lucide-react';
 import AuthRoleRequire from '../router/AuthRequire';
