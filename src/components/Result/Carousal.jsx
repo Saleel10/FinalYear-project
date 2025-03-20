@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { motion } from "framer-motion"
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -20,6 +19,19 @@ import Congrats from '../../assets/Poster/cngrts.png';
 const Carousal = () => {
   const [resultList, setResultList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
+
+  // Add window resize listener
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,7 +75,6 @@ const Carousal = () => {
           return transformedItem;
         });
 
-        console.log(transformedResults);
         setResultList(transformedResults);
         setLoading(false);
       } catch (error) {
@@ -74,6 +85,7 @@ const Carousal = () => {
 
     fetchData();
   }, []);
+
   const groupWinnersByPosition = (winners) => {
     const groupedWinners = {};
     winners.forEach((winner) => {
@@ -85,18 +97,32 @@ const Carousal = () => {
     });
     return groupedWinners;
   };
- const getBadgeImage = (position) => {
-     switch (position) {
-       case "1st":
-         return Firstbadge;
-       case "2nd":
-         return Secondbadge;
-       case "3rd":
-         return Thirdbadge;
-       default:
-         return '';
-     }
-   };
+
+  const getBadgeImage = (position) => {
+    switch (position) {
+      case "1st":
+        return Firstbadge;
+      case "2nd":
+        return Secondbadge;
+      case "3rd":
+        return Thirdbadge;
+      default:
+        return '';
+    }
+  };
+
+  // Function to determine content positioning based on screen size
+  const getContentPosition = () => {
+    if (windowWidth <= 480) {
+      return { left: '8px', top: '38%' };
+    } else if (windowWidth <= 768) {
+      return { left: '12px', top: '42%' };
+    } else {
+      return { left: '19px', top: '30%' };
+    }
+  };
+
+  const contentPosition = getContentPosition();
 
   return (
     <>
@@ -125,18 +151,11 @@ const Carousal = () => {
           modules={[EffectCoverflow, Navigation, Pagination, Autoplay]}
           className="mySwiper rounded-md skeleton-loading flex gap-10 mx-auto"
         >
-          <SwiperSlide>
-            <div className="skeleton-item "></div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="skeleton-item "></div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="skeleton-item "></div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="skeleton-item "></div>
-          </SwiperSlide>
+          {[1, 2, 3, 4].map((item) => (
+            <SwiperSlide key={item}>
+              <div className="skeleton-item"></div>
+            </SwiperSlide>
+          ))}
         </Swiper>
       ) : (
         <Swiper
@@ -172,49 +191,47 @@ const Carousal = () => {
               >
                 <div className='rounded-xl result-card-respo overflow-hidden'>
                   <div className="mx-auto shadow-xl relative">
-                    <img src={item.stage === "OFF STAGE" ? offStagePoster : onStagePoster} alt="offStagePoster" className="w-full object-cover responsive-poster-img" />
-
+                    <img src={item.stage === "OFF STAGE" ? offStagePoster : onStagePoster} alt="offStagePoster" className="w-full h-full object-cover responsive-poster-img" />
                     
-                    <div className="flex flex-col items-start justify-start absolute left-16 top-52 gap-1 h-fit">
-                        {/* <p className="w-full bg-blue-800 md:text-[14px] text-[10px] flex items-center justify-center py-1 px-4 rounded-full text-white font-semibold">
-                          Fine Arts {result.stage.toUpperCase()} Result
-                        </p> */}
-
-                        <div>
-                          <p className="font-bold uppercase respo-program">
-                            {item.programName}
-                          </p>
-                        </div>
-                        
-                        <div className="flex flex-col  rounded-xl py-3  gap-4 respo-result-card">
-                          {/* Group winners by position and display badge once for each group */}
-                          {Object.entries(groupWinnersByPosition(item.winners)).map(([position, winners]) => (
-                            <div key={position} className="flex gap-4 items-start">
-                              <div>
-                                <img src={getBadgeImage(position)} alt={`Badge ${position}`} className="top-0 respo-badge max-w-3 md:max-w-5" />
-                              </div>
-                              <div className={`${winners.length > 1 ? '-mt-1' : '-mt-1'}`}>
-                                {/* Display winner(s) and department(s) for each position */}
-                                {winners.map((winner, index) => (
-                                  <div key={index}>
-                                    <p className={`font-semibold respo-winner ${winners.length > 1 ? 'more-winners' : ''}`}>
-                                      {winner.name}
-                                    </p>
-                                    <p className={`ml-2 respo-winner-year ${winners.length > 1 ? 'more-winners-year' : ''}`}>
-                                      {winner.team && <span> {winner.team} </span>}
-                                      
-                                    </p>
-                                  </div>
-                                ))}
-                              </div>
+                    <div 
+                      className="flex flex-col items-start justify-start absolute h-fit"
+                      style={{ 
+                        left: contentPosition.left, 
+                        top: contentPosition.top 
+                      }}
+                    >
+                      <div>
+                        <p className="font-bold uppercase respo-program">
+                          {item.programName}
+                        </p>
+                      </div>
+                      
+                      <div className="flex flex-col rounded-xl  gap-1 respo-result-card">
+                        {/* Group winners by position and display badge once for each group */}
+                        {Object.entries(groupWinnersByPosition(item.winners || [])).map(([position, winners]) => (
+                          <div key={position} className="flex gap-3 items-center">
+                            <div>
+                              <img src={getBadgeImage(position)} alt={`Badge ${position}`} className="top-0 respo-badge" />
                             </div>
-                          ))}
-                        </div>
-                        {/* <img src={Congrats} alt="Congrats" className="w-44 h-auto mx-auto respo-congrats" /> */}
+                            <div className={`flex flex-col items-start justify-center ${winners.length > 1 ? '-mt-1' : '-mt-1'}`}>
+                              {/* Display winner(s) and department(s) for each position */}
+                              {winners.map((winner, index) => (
+                                <div key={index} className='flex flex-col items-start justify-center'>
+                                  <p className={`font-semibold respo-winner ${winners.length > 1 ? 'more-winners' : ''}`}>
+                                    {winner.name}
+                                  </p>
+                                  <p className={` respo-winner-year text-black items-centre ${winners.length > 1 ? 'more-winners-year' : ''}`}>
+                                    {winner.team && <span>{winner.team}</span>}
+                                  </p>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </div>
-                
+                </div>
               </motion.div>
             </SwiperSlide>
           ))}
