@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { collection, getDocs, addDoc, query, where, doc, getDoc, updateDoc } from 'firebase/firestore';
-import { db, auth } from '@/config/firebase';
-import { useNavigate } from 'react-router-dom';
+import { db } from '@/config/firebase';
+
 
 const ProgramResultsAdmin = () => {
-  const navigate = useNavigate();
+  
   const [participants, setParticipants] = useState([]);
   const [programs, setPrograms] = useState([]);
   const [loading, setLoading] = useState(true);
