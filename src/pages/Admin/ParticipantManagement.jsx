@@ -14,6 +14,7 @@ const ParticipantManagement = () => {
     'Islamic Finance',
     'BBA',
     'English',
+    'MicroBiology',
   ]);
   const [years] = useState([
    'First Year',
@@ -146,6 +147,9 @@ const ParticipantManagement = () => {
     }
     else if (value === 'English'){
       setTeam('ARTS');
+    }
+    else if (value === 'MicroBiology'){
+      setTeam('BSC');
     }
   };
 
