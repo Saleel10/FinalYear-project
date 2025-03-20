@@ -3,8 +3,8 @@ import { collection, getDocs, addDoc, query, where, orderBy, limit, startAfter }
 import { db } from '@/config/firebase';
 
 const ParticipantManagement = () => {
-  const [setParticipants] = useState([]);
-  const [setLoading] = useState(false);
+  const [participants, setParticipants] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [filterDepartment] = useState('');
   const [filterYear] = useState('');
   const [lastVisible, setLastVisible] = useState(null);
@@ -23,7 +23,7 @@ const ParticipantManagement = () => {
   const [name, setName] = useState('');
   const [department, setDepartment] = useState('Computer Science');
   const [year, setYear] = useState('Second Year');
-  const [team, setTeam] = useState('')
+  const [team, setTeam] = useState('BSC');
   const [totalPoints, setTotalPoints] = useState(0);
 
   useEffect(() => {
@@ -121,8 +121,11 @@ const ParticipantManagement = () => {
         totalPoints
       });
       setName('');
-      setDepartment('');
-      setYear('');
+      // Don't reset department and year to empty strings
+      // Instead, reset to their default values
+      setDepartment('Computer Science');
+      setYear('Second Year');
+      setTeam('BSC'); // Set team to match the default department
       setTotalPoints(0);
       fetchParticipants();
     } catch (error) {
@@ -131,40 +134,85 @@ const ParticipantManagement = () => {
   };
 
   const updateDepartment = (value) => {
-    setDepartment(value)
+    setDepartment(value);
     if (value === 'Computer Science'){
-      setTeam('BSC')
+      setTeam('BSC');
     }
     else if (value === 'Islamic Finance'){
-      setTeam('BVOC')
+      setTeam('BVOC');
     }
-  
-  else if (value === 'BBA'){
-    setTeam('COMMERCE')
-  }
-
-else if (value === 'English'){
-  setTeam('ARTS')
-}
-  }
+    else if (value === 'BBA'){
+      setTeam('COMMERCE');
+    }
+    else if (value === 'English'){
+      setTeam('ARTS');
+    }
+  };
 
   return (
     <div className="bg-white rounded-lg shadow-md p-6">
       <h2 className="text-xl font-bold mb-4">Create Participant</h2>
       <form onSubmit={handleCreateParticipant} className="mb-6 space-y-4">
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" required className="w-full bg-[#FFDAE1] px-4 py-2 border-[#280B0C] rounded-md text-[#280B0C]" />
-        <select value={department} onChange={(e) => updateDepartment(e.target.value)} required className="w-full bg-[#FFDAE1] px-4 py-2 border rounded-md text-[#280B0C]">
-          <option value="">Select Department</option>
-          {departments.map((dept, index) => <option key={index} value={dept}>{dept}</option>)}
+        <input 
+          type="text" 
+          value={name} 
+          onChange={(e) => setName(e.target.value)} 
+          placeholder="Name" 
+          required 
+          className="w-full bg-[#FFDAE1] px-4 py-2 border-[#280B0C] rounded-md text-[#280B0C]" 
+        />
+        <select 
+          value={department} 
+          onChange={(e) => updateDepartment(e.target.value)} 
+          required 
+          className="w-full bg-[#FFDAE1] px-4 py-2 border rounded-md text-[#280B0C]"
+        >
+          {departments.map((dept, index) => (
+            <option key={index} value={dept}>{dept}</option>
+          ))}
         </select>
-        <input disabled={true} value={team} className='text-white w-full bg-[#FFDAE1] px-4 py-2 border rounded-md text-[#280B0C]' placeholder="Team Name" />
-        <select value={year} onChange={(e) => setYear(e.target.value)} required className="w-full bg-[#FFDAE1] px-4 py-2 border rounded-md text-[#280B0C]">
-          <option value="">Select Year</option>
-          {years.map((yr, index) => <option key={index} value={yr}>{yr}</option>)}
+        <input 
+          disabled={true} 
+          value={team} 
+          className='w-full bg-[#FFDAE1] px-4 py-2 border rounded-md text-[#280B0C]' 
+          placeholder="Team Name" 
+        />
+        <select 
+          value={year} 
+          onChange={(e) => setYear(e.target.value)} 
+          required 
+          className="w-full bg-[#FFDAE1] px-4 py-2 border rounded-md text-[#280B0C]"
+        >
+          {years.map((yr, index) => (
+            <option key={index} value={yr}>{yr}</option>
+          ))}
         </select>
-        {/* <input type="number" value={totalPoints} onChange={(e) => setTotalPoints(Number(e.target.value))} placeholder="Total Points" className="w-full px-4 py-2 border rounded-md" /> */}
-        <button type="submit" className="bg-[#E1072E] hover:bg-[#83041B] text-white px-4 py-2 rounded-md">Create</button>
+        {/* <input 
+          type="number" 
+          value={totalPoints} 
+          onChange={(e) => setTotalPoints(Number(e.target.value))} 
+          placeholder="Total Points" 
+          className="w-full px-4 py-2 border rounded-md" 
+        /> */}
+        <button 
+          type="submit" 
+          className="bg-[#E1072E] hover:bg-[#83041B] text-white px-4 py-2 rounded-md"
+        >
+          Create
+        </button>
       </form>
+      
+      {/* Display participants list if needed */}
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        participants.length > 0 && (
+          <div className="mt-6">
+            <h2 className="text-xl font-bold mb-4">Participants List</h2>
+            {/* Table or list to display participants */}
+          </div>
+        )
+      )}
     </div>
   );
 };
